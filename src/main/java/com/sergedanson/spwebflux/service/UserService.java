@@ -7,4 +7,8 @@ import reactor.core.publisher.Mono;
 public interface UserService {
    Mono<UserEntity> findUserEntityByEmail(String email);
    Flux<UserEntity> findUsers();
+   Mono<UserEntity> createUser(UserEntity user);
+
+   Mono<UserEntity> blockUser(UserEntity user);
+
 }

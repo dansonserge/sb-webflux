@@ -20,7 +20,7 @@ public class UserEntity {
     private String firstName;
     private String lastName;
 
-    private Boolean status;
+    private Boolean isActive;
 
     private String email;
 

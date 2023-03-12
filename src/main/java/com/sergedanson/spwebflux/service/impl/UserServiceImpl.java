@@ -16,10 +16,24 @@ public class UserServiceImpl implements UserService {
     private final UserEntityRepository userEntityRepository;
 
     public Mono<UserEntity> findUserEntityByEmail(String email) {
-        return userEntityRepository.findUserEntityByEmail(email);
+        return userEntityRepository.findUserEntityByEmail(email).switchIfEmpty(Mono.error(new RuntimeException("User not found")));
     }
 
     public Flux<UserEntity> findUsers() {
         return userEntityRepository.findAll();
+    }
+
+    public Mono<UserEntity> createUser(UserEntity user) {
+        return userEntityRepository.save(user);
+    }
+
+    public Mono<UserEntity> blockUser(UserEntity user){
+        return userEntityRepository.findById(user.getId())
+                .switchIfEmpty(Mono.error(new RuntimeException("User not found")))
+                .map(olderUser -> {
+                            olderUser.setIsActive(false);
+                            return olderUser;
+                        })
+                .flatMap(userEntityRepository::save);
     }
 }

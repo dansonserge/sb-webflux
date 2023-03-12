@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS user_entity (
                    lastName VARCHAR(255) NOT NULL,
                    email VARCHAR(255) NOT NULL UNIQUE,
                    password VARCHAR(255) NOT NULL,
-                   status BOOLEAN NOT NULL DEFAULT false
+                   is_active BOOLEAN NOT NULL DEFAULT false
                 );

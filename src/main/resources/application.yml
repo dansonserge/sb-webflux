@@ -3,7 +3,7 @@ server:
 spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/sb_webflux_db
-    username: ${DB_USER:postgres}
+    username: postgres
     password:
     pool:
       enabled: true

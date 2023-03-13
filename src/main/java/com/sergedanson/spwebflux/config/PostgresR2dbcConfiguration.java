@@ -25,3 +25,4 @@ public class PostgresR2dbcConfiguration extends AbstractR2dbcConfiguration {
     }
 
 }
+

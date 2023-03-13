@@ -1,6 +1,13 @@
 server:
   port: 8070
 spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/sb_webflux_db
+    username: ${DB_USER:postgres}
+    password:
+    pool:
+      enabled: true
+
   flyway:
     enabled: true
     locations:
@@ -8,3 +15,6 @@ spring:
     baseline-on-migrate: false
     out-of-order: false
     validate-on-migrate: false
+    url: jdbc:postgresql://localhost:5432/sb_webflux_db
+    user: postgres
+    password:
